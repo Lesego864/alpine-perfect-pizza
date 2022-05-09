@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AlpineJS Perfect Pizza</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+
+</head>
+
+<body>
+
+    <div>
+        <h1>Perfect Pizza</h1>
+    </div>
+
+    <div x-data="{smallPizza:0, mediumPizza:0, largePizza:0, get total(){ return (this.smallPizza * 48.99 + this.mediumPizza * 78.99 + this.largePizza * 114.99 ).toFixed(2)}, checkout: false, amount:''}">
+
+        <div class="shoppingCart" x-show="smallPizza != 0 || mediumPizza != 0 || largePizza != 0">
+            <h2>Shopping Cart</h2>
+            <template x-if="smallPizza > 0">
+                    <div class="scart">
+                      Small Pizza &emsp;
+                      <template x-if="!checkout">
+                        <button @click="smallPizza++">+</button> </template
+                      ><span x-text="smallPizza"></span
+                      ><template x-if="!checkout"
+                        ><button @click="smallPizza--">-</button></template
+                      >
+                      <span>R<span x-text="(smallPizza * 48.99).toFixed(2)"></span></span>
+                    </div>
+                  </template>
+            <template x-if="mediumPizza > 0">
+            <div class="mcart">
+              Medium Pizza
+              <template x-if="!checkout"
+                ><button @click="mediumPizza++">+</button></template
+              ><span x-text="mediumPizza"></span
+              ><template x-if="!checkout"
+                ><button @click="mediumPizza--">-</button></template
+              >
+              <span>R<span x-text="(mediumPizza * 78.99).toFixed(2)"></span></span>
+            </div>
+          </template>
+            <template x-if="largePizza > 0">
+            <div class="lcart">
+              Large Pizza &emsp;
+              <template x-if="!checkout"
+              ><button @click="largePizza++">+</button></template
+              ><span x-text="largePizza"></span
+              ><template x-if="!checkout"
+                ><button @click="largePizza--">-</button></template
+              >
+              <span>R<span x-text="(largePizza * 114.99).toFixed(2)"></span></span>
+            </div>
+          </template>
+            <div><strong>TOTAL COST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;R<span x-text="total"></span></strong></div>
+            <template x-if="!checkout">
+            <button @click="checkout=!checkout">CHECK OUT</button>
+          </template>
+            <template x-if="checkout">
+            <label
+              >Amount Paid &emsp;(R) = <input
+                type="text" 
+                min="0" 
+                step="0.01" 
+                x-model="amount" 
+            /></label>
+            <!-- <button @click="$dispatch('cart')">Back</button> -->
+          </template>
+            <template x-if="amount == total && checkout">
+              <!-- <br> -->
+            <span>
+                <br>
+              <div style="color: green"><br>Successful Purchase!</div>
+              <br>
+              <strong style="color: #CC8B86; font-size: 1.2em">Thank you for shopping at Perfect Pizza!</strong> 
+              <br>
+              <button @click="smallPizza=0; mediumPizza=0; largePizza=0; checkout=false; amount=''">
+                Complete Order and close shopping cart
+              </button>
+            </span>
+          </template>
+            <template x-if="(parseInt(amount) < total && amount != total && checkout)">
+              <!-- <br> -->
+            <span>
+                <br>
+              <div style="color: red"><br>Insufficient Funds!</div>
+              <br>
+              <button @click="smallPizza=0; mediumPizza=0; largePizza=0; checkout=false; amount=''">
+                Cancel order and close shopping cart
+              </button>
+            </span>
+          </template>
+
+            <template x-if="parseInt(amount) > total && checkout">
+            <span>
+              <div style="color: green">
+                  <br>
+                Successful Purchase, change due is R<span
+                  x-text="(parseInt(amount) - total).toFixed(2)"
+                ></span>
+              </div>
+                <br>
+              <strong style="color: #CC8B86; font-size: 1.2em">Thank you for shopping at Perfect Pizza!</strong> 
+              <br>
+              <button
+                @click="smallPizza=0; mediumPizza=0; largePizza=0; checkout=false; amount=''"
+              >
+                Complete order and close shopping cart
+              </button>
+              <!-- $watch('', function (value) {
+                if (value) {
+                    setTimeout(() => show = false, 3000)
+                }
+            }) -->
+
+            </span>
+          </template>
+        </div>
+
+
+        <div class="specials">
+            <div class="small">
+                <h2>Small Pizza</h2>
+                <img src="pizza.png" width="140">
+                <h3>R48.99</h3>
+                <i>
+              small pizza with 3 toppings
+              1 meat topping.
+              3 or less other toppings.
+          </i>
+                <br>
+                <button @click="smallPizza++">ORDER!</button>
+            </div>
+            <div class="medium">
+                <h2>Medium Pizza</h2>
+                <img src="pizza.png" width="170">
+                <h3>R78.99</h3>
+                <i>
+            medium margeritha pizza with 3 toppings max.
+            2 or less meat topping.
+            3 or less other toppings.
+          </i>
+                <br>
+                <button @click="mediumPizza++">ORDER!</button>
+            </div>
+            <div class="large">
+                <h2>Large Pizza</h2>
+                <img src="pizza.png" width="190">
+                <h3>R114.99</h3>
+                <i>
+            large margeritha pizza with 3 toppings max.
+            3 meat toppings max.
+            3 or less other toppings.
+          </i>
+                <br>
+                <button @click="largePizza++">ORDER!</button>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <strong>Contact us at:</strong> (021)-541-1000
+
+                <strong>twitter /fb /insta </strong> @perfectpizza
+            </div>
+
+        </div>
+        <div class="footer2">
+            <h5>Lesego Tshipu | AlpineJS Perfect Pizza | Google Work Incubation 2022</h5>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

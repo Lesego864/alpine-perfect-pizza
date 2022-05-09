@@ -1,0 +1,107 @@
+body {
+    background: white;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #F9EAE1;
+    color: #7D4F50;
+    font-size: 0.75em;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.shoppingCart {
+    background-color: transparent;
+    flex: 1;
+    border: 1px solid #7D4F50;
+    border-radius: 1.5em;
+    margin: 3em;
+    /* padding: 1em; */
+    box-shadow: 5px 10px 20px #7D4F50;
+    padding: 0.1em;
+}
+
+input {
+    background-color: transparent;
+    border-radius: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.small {
+    background-color: #D1BE9C;
+}
+
+.medium {
+    background-color: #AA998F;
+}
+
+.large {
+    background-color: #CC8B86;
+    flex: 2;
+}
+
+.specials div {
+    flex: 1;
+    border: 1px solid #7D4F50;
+    border-radius: 1.5em;
+    margin: 3em;
+    /* padding: 1em; */
+    box-shadow: 5px 10px 20px #7D4F50;
+}
+
+.small img {
+    width: 10em;
+}
+
+.medium img {
+    width: 10em;
+}
+
+.large img {
+    width: 10em;
+}
+
+.footer {
+    display: flex;
+    border-radius: 1.5em;
+    margin-bottom: 2.1em;
+}
+
+.footer div {
+    flex: 1;
+    border: 1px solid #7D4F50;
+    /* margin-top: 1em; */
+    padding: 1em;
+    margin: 3em;
+    background-color: transparent;
+    box-shadow: 5px 10px 20px #7D4F50;
+    border-radius: 1.5em;
+}
+
+button {
+    border-radius: 1.5em;
+    background-color: transparent;
+    /*color: #C1D3FE;*/
+    font-weight: lighter;
+    border-color: #7D4F50;
+    color: #7D4F50;
+    margin: 2em;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 5px 10px 20px #FFE1A8;
+}
+
+@media (min-width: 768px) {
+    .specials {
+        display: flex;
+    }
+    body {
+        font-size: 1em;
+    }
+}
