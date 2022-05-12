@@ -28,20 +28,20 @@
                       ><span x-text="smallPizza"></span
                       ><template x-if="!checkout"
                         ><button @click="smallPizza--">-</button></template
-                      >
-                      <span>R<span x-text="(smallPizza * 48.99).toFixed(2)"></span></span>
+                      >&emsp;
+                      <span>R<span x-text="(smallPizza * 48.99).toFixed(2)"></span></span>&emsp;&emsp;
                     </div>
                   </template>
             <template x-if="mediumPizza > 0">
             <div class="mcart">
-              Medium Pizza
+              Medium Pizza 
               <template x-if="!checkout"
                 ><button @click="mediumPizza++">+</button></template
               ><span x-text="mediumPizza"></span
               ><template x-if="!checkout"
                 ><button @click="mediumPizza--">-</button></template
-              >
-              <span>R<span x-text="(mediumPizza * 78.99).toFixed(2)"></span></span>
+              >&emsp;&emsp;
+              <span>R<span x-text="(mediumPizza * 78.99).toFixed(2)"></span></span>&emsp;
             </div>
           </template>
             <template x-if="largePizza > 0">
@@ -52,11 +52,11 @@
               ><span x-text="largePizza"></span
               ><template x-if="!checkout"
                 ><button @click="largePizza--">-</button></template
-              >
-              <span>R<span x-text="(largePizza * 114.99).toFixed(2)"></span></span>
+              >&emsp;
+              <span>R<span x-text="(largePizza * 114.99).toFixed(2)"></span></span>&emsp;&emsp;
             </div>
           </template>
-            <div><strong>TOTAL COST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;R<span x-text="total"></span></strong></div>
+            <div><strong>TOTAL COST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;R<span x-text="total"></span></strong></div>
             <template x-if="!checkout">
             <button @click="checkout=!checkout">CHECK OUT</button>
           </template>
